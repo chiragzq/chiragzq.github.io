@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Yay for toothpicks! </title>
+      <style>
+    body {
+    background-color: #000000;
+}
+p {
+    font-family: Syncopate;
+    color: #FFFFFF;
+}
+        /* latin */
+@font-face {
+  font-family: 'Syncopate';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Syncopate'), local('Syncopate-Regular'), url(http://fonts.gstatic.com/s/syncopate/v6/pDM9CVwNx1ufBHCEatJA3BJtnKITppOI_IvcXXDNrsc.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* latin */
+@font-face {
+  font-family: 'Syncopate';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Syncopate Bold'), local('Syncopate-Bold'), url(http://fonts.gstatic.com/s/syncopate/v6/S5z8ixiOoC4WJ1im6jAlYDy24DTBG-RpCwXaYkM4aks.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+    </style>
+</head>
+<body>
+  <p id="result"></p>
+  <script>
+    function toothPicks(l, w) {
+    var x = l * (w + 1),
+        y = w * (l + 1);
+    return x + y;
+}
+var total = "",
+    l,
+    w,
+    tPN,
+    amount = prompt("How many outcomes?");
+for (var i = 1; i <= Number(amount); i++) {
+    l = Math.floor(Math.random() * 100) + 1;
+    w = Math.floor(Math.random() * 100) + 1;
+    tPN = toothPicks(l, w);
+    total = (total + "A toothpick grid that is <b>" + l + " </b> by <b>" + w + " </b> contains <b>" + tPN + "</b> toothpicks." + "<br>");
+}
+document.getElementById("result").innerHTML = total;
+    </script>
+</body>
+</html>
