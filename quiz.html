@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.q {
+    font-size: 220%;
+    font-family:'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;
+}
+.a {
+    font-size: 110%;
+    font-family:'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;
+}
+.f {
+    color: black;
+}
+</style>
+</head>
+<body>
+<p id="question" class='q'></p>
+<p id="1" class='a'></p>
+<p id="2" class='a'></p>
+<p id="3" class='a'></p>
+<p id="4" class='a'></p>
+<p id="select" class='a"'>Choice:
+    <input id="option" size="1" maxlength="1"></input>
+    <br>
+    <br>
+    <button id="check" class='a'>Submit</button>
+</p>
+<p id="flash" class='f'></p>
+<p id="end"></p>
+<script>
+var qNum = 1;
+var answers = [undefined, 2, 3, 2, 4, 1, 4];
+var questions = ["", "Which of these is a drug to treat tuberculosis?", "What is the bacterium that infects you called?", "Which of the these is a symptom of TB?", "What is the vaccine for TB called?", "How common is TB in the US?", "(Optional) How many citations do we have?"];
+var options = ["", "Arthonoid", "Pyrazinamide", "Rimpmin", "Erthonash", "Microbacteria tuberculosis", "Tuberculosis infectinum", "Mycobacterium tuberculosis", "Tuber culosis", "Vomiting", "Shortness of breath", "Death", "Bleeding", "ARN", "BGC", "RNM", "BCG", "Rare", "All the time", "Occasionally", "Never", "2", "4", "1", "5"];
+var choice = "";
+var correct = [];
+function pause(ms) {
+    ms += new Date().getTime();
+    while (new Date() < ms) {}
+}
+function checkAmount() {
+    var j = 0;
+    for(var i = 0;i < correct.length;i ++) {
+        if(correct[i] === true) j++;
+    }
+    return j;
+}
+function flash(value) {
+    if (value === true) {
+        for (var i = 1; i <= 1; i++) {
+            document.getElementById("flash").innerHTML = "Correct!";
+            pause(1000);
+            document.getElementById("flash").innerHTML = "";
+        }
+    } else {
+        for (var i = 1; i <= 1; i++) {
+            document.getElementById("flash").innerHTML = "Incorrect!";
+            pause(1000);
+            document.getElementById("flash").innerHTML = "";
+        }
+    }
+}
+
+function displayQ(number) {
+    document.getElementById("question").innerHTML = "Q" + number + ": " + questions[number];
+    document.getElementById("1").innerHTML = "1: " + options[(number - 1) * 4 + 1];
+    document.getElementById("2").innerHTML = "2: " + options[(number - 1) * 4 + 2];
+    document.getElementById("3").innerHTML = "3: " + options[(number - 1) * 4 + 3];
+    document.getElementById("4").innerHTML = "4: " + options[(number - 1) * 4 + 4];
+}
+
+function displayE() {
+    var amountcorrect = checkAmount();
+    var todisp = "<p class='q'>End!</p><p class='a'>You got " + amountcorrect + " questions correct!</p><p class='a'>That is " + Math.round(amountcorrect/6 * 100) + "%!</p>";
+    document.getElementById("question").innerHTML = "";
+    document.getElementById("1").innerHTML = "";
+    document.getElementById("2").innerHTML = "";
+    document.getElementById("3").innerHTML = "";
+    document.getElementById("4").innerHTML = "";
+    document.getElementById("select").innerHTML = "";
+    document.getElementById("end").innerHTML = todisp;
+}
+
+function submitA() {
+    if (answers[qNum] == document.getElementById('option').value) {
+        alert("Correct!");
+        document.getElementById('option').value = "";
+        if(correct.length < qNum) correct = correct.concat(true);        
+        qNum += 1;
+    } else {
+        alert("Incorect!"); 
+        if(correct.length < qNum) {
+        correct = correct.concat(false);}
+    }
+}
+
+function loop() {
+    if (qNum < 7) {
+        displayQ(qNum);
+    } else displayE();
+}
+setInterval(loop, 100);
+document.getElementById('check').addEventListener('click', submitA, false);
+</script>
+</body>
+</html>
