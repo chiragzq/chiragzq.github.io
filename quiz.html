@@ -74,7 +74,7 @@ function displayQ(number) {
 
 function displayE() {
     var amountcorrect = checkAmount();
-    var todisp = "<p class='q'>End!</p><p class='a'>You got " + amountcorrect + " questions correct!</p><p class='a'>That is " + Math.round(amountcorrect/6 * 100) + "%!</p>";
+    var todisp = "<p class='q'>End!</p><p class='a'>You got " + amountcorrect + "/6 questions correct!</p><p class='a'>That is " + Math.round(amountcorrect/6 * 100) + "%!</p>";
     document.getElementById("question").innerHTML = "";
     document.getElementById("1").innerHTML = "";
     document.getElementById("2").innerHTML = "";
