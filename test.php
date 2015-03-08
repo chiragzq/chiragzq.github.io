@@ -5,7 +5,7 @@
 </head>
 <body>
 <?php
-echo "Test";
+die "Test";
 ?>
 </body>
 </html>
