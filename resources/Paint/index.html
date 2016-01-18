@@ -1,0 +1,24 @@
+<title>Paint</title>
+<link href="style.css" rel="stylesheet">
+<canvas id="demo" width="400" height="400" style="border:3px solid #00ffaa"></canvas>
+<br>x:
+<input value="10" id="xsize" size="1">
+<br>Y:
+<input value="10" id="ysize" size="1">
+<br>Color:
+<input value="#FF0000" id="color" size="7">
+<br>
+<button onclick="var c = document.getElementById(&#39;demo&#39;);
+var ctx = c.getContext(&#39;2d&#39;); ctx.clearRect(0,0,500,500);">Clear</button>
+<br>
+<br>Colors
+<hr>
+<button class="cbutton" id="blue" style="background-color: blue"></button>
+<button class="cbutton" id="red" style="background-color: red"></button>
+<button class="cbutton" id="green" style="background-color: green"></button>
+<button class="cbutton" id="orange" style="background-color: orange"></button>
+<button class="cbutton" id="yellow" style="background-color: yellow"></button>
+<button class="cbutton" id="purple" style="background-color: purple"></button>
+<button class="wbutton" id="white" style="background-color: white"></button>
+    <button class="cbutton" id="black" style="background-color: black"></button>
+    <script type="text/javascript" src="background.js"></script>

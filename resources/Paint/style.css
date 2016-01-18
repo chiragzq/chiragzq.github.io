@@ -1,0 +1,11 @@
+.cbutton {
+    width: 20px;
+    height: 20px;
+    border-width: 0px;
+}
+.wbutton {
+    width: 20px;
+    height: 21px;
+    border-width: 1px;
+    border-color: black;
+}
