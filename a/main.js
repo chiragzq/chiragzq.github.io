@@ -7,7 +7,7 @@ const collectData = true;
 const HUMAN = 0;
 const NEURAL = 1;
 const AI = 2;
-let GAME_INTERVAL = 50;
+let GAME_INTERVAL = 100;
 
 function SnakeGame() {
   this.gridWidth = 20;
