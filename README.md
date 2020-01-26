@@ -1,4 +1,4 @@
-SpafinDoople.github.io
+chiragzq.github.io
 ======================
 
-Website test?
+Using github as a free hosting service
