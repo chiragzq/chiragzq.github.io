@@ -1,7 +1,7 @@
 {
 "companyName": "Harker Robotics",
 "productName": "Scouting App 2020",
-"productVersion": "0.1",
+"productVersion": "2.2.1",
 "dataUrl": "scouting.data.unityweb",
 "wasmCodeUrl": "scouting.wasm.code.unityweb",
 "wasmFrameworkUrl": "scouting.wasm.framework.unityweb",
