@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Welcome! </title>
+<title>Chirag Kaushik </title>
 <style>
   body {
     background: url("bg2.png"), url("poordoo.png");
@@ -30,12 +30,41 @@
     -webkit-user-drag: none;
     user-drag: none;
   }
-
+  @keyframes fadein {
+    from {
+        opacity:1;
+    }
+    to {
+        opacity:0;
+    }
+  }
+  .fade {
+    animation: fadein 2s;
+  }
+  #cover {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #fff;
+    z-index: 9999;
+  }
 </style>
 </head>
 <body>
+  <div id="cover"></div>
+
   <div id="main">
-    <a href="https://www.linkedin.com/in/chirag-kaushik-13446117b" ><img src="name.png" id="name" /></a>
+    <a href="https://www.linkedin.com/in/chirag-kaushik-13446117b" target="_blank" ><img src="name.png" id="name" /></a>
   </div>
+  <script>
+    window.onload = function() {
+      document.getElementById("cover").classList.add("fade");
+      setTimeout(function() {
+        document.getElementById("cover").style.display = "none";
+      }, 2000);
+    }
+  </script>
 </body>
 </html>
