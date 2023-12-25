@@ -55,9 +55,11 @@
     align-items: center;
     justify-items: center;
     justify-content: space-around;
+    flex-wrap: nowrap;
   }
 
   #head-links>a {
+    padding: 0rem 1rem;
     margin-top: 2rem;
     color:white !important;
     text-decoration-style: dotted;
@@ -95,7 +97,90 @@
     background: #fff;
     z-index: 9999;
   }
+
+
+
+  #snackbar {
+  width: 15%;
+  height: 1rem;
+  margin-left: -7.5%;
+  background-color: rgba(0, 255, 182, 0.5);
+  text-align: center;
+  border-radius: 2rem;
+  padding: 1rem;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 0;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  transition: bottom 0.5s, opacity 0.5s;
+  opacity: 0;
+}
+
+#snackbar>p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+#snackbar.show {
+  opacity: 1;
+  bottom: 2rem;
+  /* -webkit-animation: fadein2 0.5s, fadeout 0.5s 2.5s; */
+  /* animation: fadein2 0.5s, fadeout 0.5s 2.5s; */
+}
+
+@-webkit-keyframes fadein2 {
+  from {bottom: 0; opacity: 0;} 
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein2 {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;} 
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+
+@media only screen and (max-width: 641px) {
+  #main {
+    width: 100vw;
+    margin-left: 0;
+    padding: 1.5rem 1.5rem;
+  }
+
+  #head {
+    height: 24rem;
+  }
+
+  #head-logo-cont {
+    height: 15rem;
+    margin-top: 3rem;
+  }
+
+  #head-links {
+    width: 80%;
+    height: 6rem;
+    flex-wrap: wrap;
+  }
+
+  #head-links>a {
+    margin-top: 1.5rem;
+  }
+}
+
 </style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
   <div id="cover"></div>
@@ -108,6 +193,7 @@
         <a href="/">projects</a>
         <a href="https://github.com/chiragzq" target="_blank">github</a>
         <a href="https://www.linkedin.com/in/chirag-kaushik-13446117b" target="_blank">linkedin</a>
+        <a href="#" id="email">email</a>
       </div>
     </div>
     <hr />
@@ -117,9 +203,7 @@
       <br />
       <br />
       <p>interested in robotics, algorithms, controls, computer vision, computer graphics, and machine learning.</p>
-      <br />
-      <br />
-      <p>feel free to contact me at kaushikc at purdue dot edu.</p>
+      <div id="snackbar" class=""><p>copied to clipboard</p></div>
     </div>
   </div>
   <script>
@@ -129,6 +213,25 @@
         document.getElementById("cover").style.display = "none";
       }, 1000);
     }
+    let i = -1;
+    document.getElementById("email").addEventListener("click", function() {
+      let el = document.getElementById("snackbar");
+      el.classList.add("show")
+
+      clearTimeout(i);
+      i=setTimeout(function(){ el.classList.remove("show") }, 3000);
+
+      if (document.execCommand) {
+        e = document.createElement("div");
+        e.style.cssText = "position:fixed;top:-999px";
+        e.textContent = "kaushikc@purdue.edu";
+        document.body.append(e);
+        getSelection().setBaseAndExtent(e.firstChild, 0, e.firstChild, e.textContent.length);
+        if (!document.execCommand("copy")) {
+        }
+        e.remove();
+      }
+    })
   </script>
 </body>
 </html>
